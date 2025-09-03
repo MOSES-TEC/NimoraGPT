@@ -26,7 +26,7 @@ export const stripeWebhooks = async ( request, response ) => {
                 const session = sessionList.data[0];
                 const { transactionId, appId } = session.metadata;
 
-                if(appId !== "nimoragpt") {
+                if(appId === "nimoragpt") {
                     const transaction = await Transaction.findOne({ _id: transactionId, isPaid: false });
 
                     // Update credits in user account
